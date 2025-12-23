@@ -3,534 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Elucida Labs | The AI Operating System for Semiconductor R&D</title>
-    <meta name="description" content="Accelerate time-to-market with Elucida Labs, the AI-agentic semiconductor R&D platform. Utilize our intelligent design of experiments, automated predictive analyctics, 3D hybrid digital twin, virtual metrology, and creating a corporate process engineering brain. The leading JMP alternative for fab data analytics.">
-    <meta name="keywords" content="Semiconductor R&D Platform, AI Recipe Optimization, Improve Wafer Yield, Yield Management Software, Semiconductor Digital Twin, Predictive Process Control, Wafer Map Software, JMP Alternative, Fab Data Analytics, Virtual Metrology">
-    <meta name="author" content="Elucida Labs">
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:title" content="Elucida Labs | The AI Operating System for Semiconductor R&D">
-    <meta property="og:description" content="Accelerate time-to-market with our AI-agentic platform for intelligent design of experiments, automated predictive analyctics, 3D hybrid digital twin, virtual metrology, and creating a corporate process engineering brain.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.elucidalabs.com"> <meta property="og:image" content="https://i.ibb.co/L1Yx9V3/Elucida-Logo-dark.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Elucida Labs | AI Semiconductor R&D Platform">
-    <meta name="twitter:description" content="Accelerate time-to-market with our AI-agentic platform for intelligent design of experiments, automated predictive analyctics, 3D hybrid digital twin, virtual metrology, and creating a corporate process engineering brain.">
-    <meta name="twitter:image" content="https://i.ibb.co/L1Yx9V3/Elucida-Logo-dark.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Elucida Labs | Semiconductor Process Innovation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Elucida Labs R&D Platform",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "description": "An AI-agentic operating system for semiconductor R&D designed to improve accelerate time-to-market through automated predictive analyctics, 3D hybrid digital twin, virtual metrology, and creating a corporate process engineering brain.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "category": "Early Access Waitlist"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Elucida Labs",
-        "url": "https://www.elucidalabs.com"
-      }
-    }
-    </script>
-
-    <script>
-        // This function will contain and run all the page's logic.
-        // It's defined here in the head, and called by the Amplitude snippet's onload callback below.
-        function initializePage() {
-            lucide.createIcons();
-            
-            // --- Amplitude Analytics & Session Replay Setup ---
-            const AMPLITUDE_API_KEY = "e4af70c29028e043a6aaceeab479cdae";
-
-            // 1. Import sessionReplayPlugin from the global window object
-            const { sessionReplayPlugin } = window.sessionReplay;
-            
-            // 2. Add the Session Replay plugin to Amplitude
-            amplitude.add(sessionReplayPlugin({sampleRate: 1}));
-
-            // 3. Initialize Amplitude SDK with autocapture enabled
-            amplitude.init(AMPLITUDE_API_KEY, undefined, {
-                defaultTracking: {
-                    sessions: true,
-                    pageViews: true,
-                    formInteractions: true, // Autocapture will handle this
-                    fileDownloads: true
-                },
-                autocapture: true, // As per documentation
-                includeGclid: true,
-                includeReferrer: true,
-            });
-
-            const form = document.getElementById('application-form');
-            const modal = document.getElementById('form-modal');
-            const modalContent = modal.querySelector('.modal-content');
-            const formContainer = document.getElementById('form-container');
-            const successMessage = document.getElementById('success-message');
-            const openModalButtons = [
-                document.getElementById('header-cta-btn'),
-                document.getElementById('hero-cta-btn'),
-                document.getElementById('footer-cta-btn')
-            ];
-            const closeModalButtons = [
-                document.getElementById('close-modal-btn'),
-                document.getElementById('close-success-btn')
-            ];
-
-            let formInteracted = false;
-            let formSubmittedSuccessfully = false;
-
-            function openModal() {
-                formInteracted = false;
-                formSubmittedSuccessfully = false;
-
-                formContainer.classList.remove('hidden');
-                successMessage.classList.add('hidden');
-                form.reset();
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    modalContent.classList.remove('scale-95');
-                }, 10);
-                
-                amplitude.track('Form Viewed');
-            }
-
-            function closeModal() {
-                modal.classList.add('opacity-0');
-                modalContent.classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-
-                if (formInteracted && !formSubmittedSuccessfully) {
-                    amplitude.track('Form Incompletion');
-                }
-            }
-
-            openModalButtons.forEach(btn => btn.addEventListener('click', openModal));
-            closeModalButtons.forEach(btn => btn.addEventListener('click', closeModal));
-            
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                amplitude.track('Form Submit Attempt');
-                const formData = new FormData(form);
-                const object = Object.fromEntries(formData);
-                
-                const emailHtml = `
-                    <style>
-                        table { border-collapse: collapse; width: 100%; font-family: sans-serif; }
-                        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
-                        th { background-color: #f2f2f2; color: #333; }
-                    </style>
-                    <h3>New Early Access Request</h3>
-                    <table>
-                        <tr><th>Full Name</th><td>${object.full_name || ''}</td></tr>
-                        <tr><th>Company</th><td>${object.company || ''}</td></tr>
-                        <tr><th>Work Email</th><td>${object.email || ''}</td></tr>
-                    </table>
-                `;
-                
-                object.message = emailHtml;
-                const json = JSON.stringify(object);
-
-                fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: json
-                    })
-                    .then(async (response) => {
-                        let jsonResponse = await response.json();
-                        if (response.status == 200) {
-                            formSubmittedSuccessfully = true;
-                            formContainer.classList.add('hidden');
-                            successMessage.classList.remove('hidden');
-                            
-                            amplitude.track('Form Submit Success');
-                            amplitude.setUserId(object.email);
-                            const identifyObj = new amplitude.Identify();
-                            identifyObj.set('name', object.full_name);
-                            identifyObj.set('company', object.company);
-                            amplitude.identify(identifyObj);
-
-                        } else {
-                            console.log(response);
-                            alert('Something went wrong. Please try again.');
-                            amplitude.track('Form Submit Failure', { error: jsonResponse.message });
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        alert('Something went wrong. Please try again.');
-                        amplitude.track('Form Submit Failure', { error: 'Network or client-side error' });
-                    });
-            });
-
-            document.getElementById('header-cta-btn').addEventListener('click', () => {
-                amplitude.track('CTA Clicked', { button_location: 'header', action: 'open_modal' });
-            });
-            document.getElementById('hero-cta-btn').addEventListener('click', () => {
-                amplitude.track('CTA Clicked', { button_location: 'hero', action: 'open_modal' });
-            });
-            document.getElementById('footer-cta-btn').addEventListener('click', () => {
-                amplitude.track('CTA Clicked', { button_location: 'footer', action: 'open_modal' });
-            });
-            document.getElementById('learn-more-btn').addEventListener('click', () => {
-                amplitude.track('Learn More Clicked');
-            });
-
-            const scrollThresholds = [25, 50, 75, 90];
-            const trackedScrollThresholds = new Set();
-            window.addEventListener('scroll', () => {
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                if (scrollHeight <= 0) return;
-                const scrollPosition = window.scrollY;
-                const scrollPercentage = Math.round((scrollPosition / scrollHeight) * 100);
-                scrollThresholds.forEach(threshold => {
-                    if (scrollPercentage >= threshold && !trackedScrollThresholds.has(threshold)) {
-                        amplitude.track('Scroll Depth Reached', { percentage: threshold });
-                        trackedScrollThresholds.add(threshold);
-                    }
-                });
-            });
-
-            let pageLoadTime = new Date().getTime();
-            document.addEventListener('visibilitychange', () => {
-              if (document.visibilityState === 'hidden') {
-                const timeOnPage = Math.round((new Date().getTime() - pageLoadTime) / 1000);
-                if (navigator.sendBeacon) {
-                     const data = new Blob([JSON.stringify({
-                        api_key: AMPLITUDE_API_KEY,
-                        events: [{
-                            event_type: 'Page Exit',
-                            user_id: amplitude.getUserId(),
-                            device_id: amplitude.getDeviceId(),
-                            session_id: amplitude.getSessionId(),
-                            event_properties: {
-                                duration_seconds: timeOnPage,
-                                pathname: window.location.pathname
-                            }
-                        }]
-                    })], { type: 'application/json' });
-                    navigator.sendBeacon('https://api2.amplitude.com/2/httpapi', data);
-                }
-              }
-            });
-        }
-    </script>
-    
-    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.7.2-min.js.gz"></script>
-    <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.1-min.js.gz"></script>
-    <script>
-      // This robustly initializes the page logic after both scripts are guaranteed to be loaded.
-      window.addEventListener('load', initializePage);
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #002060; /* Dark Blue from your deck */
+            --accent-teal: #00B050; /* Teal from your deck */
+            --text-light: #F5F7FA;
+            --text-gray: #A0AEC0;
+            --bg-dark: #001025;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0D1117;
-            color: #C9D1D9;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Flex layout to center content vertically */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .gradient-bg {
-            background: radial-gradient(circle at 30% 107%, #004D40 0%, #0D1117 40%);
+
+        /* Gradient Background Effect */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-blue) 100%);
+            z-index: -1;
+            opacity: 0.8;
         }
-        .feature-card {
-            background-color: rgba(22, 27, 34, 0.5);
-            border: 1px solid #30363D;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-shrink: 0; /* Prevents nav from shrinking */
         }
-        .cta-button {
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn {
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(3, 102, 214, 0.3), 0 4px 6px -2px rgba(3, 102, 214, 0.2);
+
+        .contact-btn:hover {
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+            background: rgba(0, 176, 80, 0.1);
         }
-        .secondary-button {
-             border: 1px solid #30363D;
-             transition: all 0.3s ease;
+
+        /* Hero Section - Centered layout */
+        .hero {
+            flex-grow: 1; /* Pushes footer down, takes available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center */
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            /* Visual adjustment to pull text slightly up from dead-center */
+            padding-bottom: 5vh; 
         }
-        .secondary-button:hover {
-            background-color: #161B22;
-            border-color: #8B949E;
+
+        h1 {
+            font-size: 3.5rem; 
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .section-title {
-            border-bottom: 2px solid #238636;
-            padding-bottom: 0.5rem;
-            display: inline-block;
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            font-weight: 300;
         }
-        /* Styles for the modal */
-        .modal {
-            transition: opacity 0.3s ease;
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            flex-shrink: 0;
+            width: 100%;
         }
-        .modal-content {
-             transition: transform 0.3s ease;
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding-bottom: 0; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-40 bg-opacity-80 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                 <h1 class="text-xl font-bold text-gray-200">Elucida Labs</h1>
-            </div>
-            <button id="header-cta-btn" class="cta-button bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg">
-                Request Early Access
-            </button>
+    <div class="background-overlay"></div>
+
+    <nav>
+        <div class="logo">
+            Elucida Labs
         </div>
+        <a href="mailto:info@elucidalabs.com" class="contact-btn">Contact Us</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Accelerating the Future of Semiconductor Innovation</h1>
+        
+        <p class="subtitle">
+            We bridge the gap between advanced physics and state-of-the-art AI to deliver unprecedented efficiency in semiconductor process development.
+        </p>
     </header>
 
-    <main class="gradient-bg pt-32 pb-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-100 leading-tight">
-                Meet Your Customer's Scorecard Faster.
-            </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-                The AI Semiconductor R&D Platform for process engineers to accelerate time-to-market. Stop wasting time on manual wafer analysis and trial-and-error experimentation.
-            </p>
-            <div class="mt-10 flex justify-center items-center space-x-4">
-                <button id="hero-cta-btn" class="cta-button bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-xl">
-                    Request Early Access
-                </button>
-                <a href="#features" id="learn-more-btn" class="secondary-button text-gray-300 font-semibold py-3 px-8 rounded-lg">
-                    Learn More
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <section id="problem" class="py-20 bg-[#161B22]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-200">An R&D Workflow Limited by Legacy Tools</h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Your process expertise is your advantage. Your legacy software tools shouldn't hold you back.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-card p-8 rounded-xl">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-900/50 mb-6">
-                        <i data-lucide="flask-conical" class="text-green-400"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Slow, Manual Experimentation</h3>
-                    <p class="text-gray-400">
-                        Relying on 'black box' AI models or traditional DoE still demands hundreds of runs, consuming valuable tool time and leading to wafer scrap.
-                    </p>
-                </div>
-                <div class="feature-card p-8 rounded-xl">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-900/50 mb-6">
-                        <i data-lucide="unlink" class="text-blue-400"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Siloed Data & Lost Knowledge</h3>
-                    <p class="text-gray-400">
-                        Semiconductor R&D process engineer analysis relies on fragmented tools or custom scripts. This leads to slow process engineering analysis time and the loss of critical institutional knowledge.
-                    </p>
-                </div>
-                <div class="feature-card p-8 rounded-xl">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-purple-900/50 mb-6">
-                        <i data-lucide="edit-3" class="text-purple-400"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Reactive, Manual Analysis</h3>
-                    <p class="text-gray-400">
-                        Engineers must navigate a high-dimensional space of input parameters to meet complex performance metrics. This relies on time-consuming manual analytics and subjective, individual-based interpretation. Existing tools lack the intelligence to automatically identify patterns, deviations, or root causes across complex, multi-dimensional wafer data.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="py-24 bg-gray-900/50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-200">A Centralized Semiconductor Data Science Platform</h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Our platform provides the intelligent co-pilot for Semiconductor R&D Process Engineers, designed to accelerate innovation and improve recipe convergence.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center gap-12 mb-20">
-                <div class="md:w-1/2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-green-900/50 p-2 rounded-full"><i data-lucide="fast-forward" class="text-green-400"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-200">Intelligent Design of Experiments</h3>
-                    </div>
-                    <p class="text-gray-400 text-lg mb-4">
-                        Leverage cutting-edge AI for semiconductor R&D process engineering DoE. Our platform's cutting-edge AI recipe optimization learns from each run to recommend the next best experiment, helping you optimize your process window in a fraction of the time.
-                    </p>
-                </div>
-                <div class="md:w-1/2 p-8 feature-card rounded-xl" role="img" aria-label="A bar chart showing experimentation efficiency. Traditional DoE is long, while Elucida Labs is short.">
-                    <div class="space-y-4">
-                        <p class="text-sm font-medium text-gray-300">Experimentation Efficiency</p>
-                        <div>
-                            <p class="text-xs text-gray-500 mb-1">Traditional or Black Box AI DoE</p>
-                            <div class="w-full bg-gray-700 rounded-full h-4"><div class="bg-red-500 h-4 rounded-full" style="width: 90%"></div></div>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 mb-1">With Elucida Labs</p>
-                            <div class="w-full bg-gray-700 rounded-full h-4"><div class="bg-green-500 h-4 rounded-full" style="width: 25%"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-center mb-20">
-                <div class="md:w-2/3 text-center">
-                    <div class="flex items-center justify-center space-x-3 mb-4">
-                        <div class="bg-blue-900/50 p-2 rounded-full"><i data-lucide="pie-chart" class="text-blue-400"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-200">Automated Wafer Map & AI Root Cause Analysis</h3>
-                    </div>
-                    <p class="text-gray-400 text-lg mb-4">
-                        The ultimate legacy tools alternative for semiconductor data analysis. Instantly generate interactive wafer map contour plots, wafer uniformity analysis charts, wafer edge effect charts, and more for your recipe development experiment runs. It identifies the root cause and provides a next-step recommendation.
-                    </p>
-                </div>
-            </div>
-
-            <div class="flex justify-center">
-                <div class="md:w-2/3 text-center">
-                    <div class="flex items-center justify-center space-x-3 mb-4">
-                        <div class="bg-purple-900/50 p-2 rounded-full"><i data-lucide="cuboid" class="text-purple-400"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-200">Predictive Process Engineering with a Digital Twin</h3>
-                    </div>
-                    <p class="text-gray-400 text-lg mb-4">
-                        Utilize our semiconductor digital twin for 3D wafer map visualization and virtual metrology. Predict process outcomes and understand the impact of recipe changes before committing to a single physical run.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-20 bg-[#161B22]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-200">Built by Industry Experts</h2>
-                <p class="text-gray-400 mt-4 max-w-3xl mx-auto">Our team combines decades of hands-on semiconductor process experience with deep expertise in AI and data science.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
-                
-                <div class="feature-card p-8 rounded-xl text-center flex flex-col items-center">
-                    <img class="w-32 h-32 rounded-full mx-auto mb-6 border-2 border-gray-700" src="https://media.licdn.com/dms/image/v2/C5603AQH6tb2nFzAVkw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1560226002564?e=1761177600&v=beta&t=iUESrR7YwrHDYTS_vf_s8WsNp1n9YkVYW3wEeq9vw-w" alt="Photo of Suresh Ayyalsamy">
-                    <h3 class="text-xl font-semibold text-gray-200">Suresh Ayyalsamy</h3>
-                    <p class="text-green-400 font-medium mb-3">Co-founder and CEO</p>
-                    <p class="text-gray-400 flex-grow mb-4 text-sm">An AI/ML product and company builder with deep experience at semiconductor equipment manufacturing companies. He has led product at multiple AI/ML startups and enterprises.</p>
-                    <a href="https://www.linkedin.com/in/sureshayyalsamy/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-400 transition-colors">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    </a>
-                </div>
-
-                <div class="feature-card p-8 rounded-xl text-center flex flex-col items-center">
-                    <img class="w-32 h-32 rounded-full mx-auto mb-6 border-2 border-gray-700" src="https://media.licdn.com/dms/image/v2/D5603AQGMi_LyiTsXXQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702663601604?e=1761177600&v=beta&t=1DLFz6lYv0cARMHLRyj9frIk5LZipCwzj9cZRc_iSOs" alt="Photo of Manish Sharma">
-                    <h3 class="text-xl font-semibold text-gray-200">Manish Sharma</h3>
-                    <p class="text-green-400 font-medium mb-3">Co-founder and CTO</p>
-                    <p class="text-gray-400 flex-grow mb-4 text-sm">An AI and Machine Learning expert with a Ph.D. from Stanford and over 30 years in the semiconductor industry. He specializes in building scalable AI solutions for the semiconductor industry.</p>
-                    <a href="https://www.linkedin.com/in/0manish/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-400 transition-colors">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    </a>
-                </div>
-
-                <div class="feature-card p-8 rounded-xl text-center flex flex-col items-center">
-                    <div class="w-32 h-32 rounded-full mx-auto mb-6 border-2 border-dashed border-gray-700 flex items-center justify-center bg-gray-800/50">
-                        <span class="text-gray-400 font-semibold">Joining Soon</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-200">Joining Soon</h3>
-                    <p class="text-green-400 font-medium mb-3">Co-founder and CPO</p>
-                    <p class="text-gray-400 flex-grow mb-4 text-sm">A semiconductor R&D process engineering expert with over 20 years of hands-on experience who has held leadership positions at top capital equipment companies. He holds a Ph.D. and did postdoctoral work at Stanford and UIUC.</p>
-                    <span class="text-gray-600 cursor-not-allowed">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="cta" class="py-24 bg-[#0D1117]">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-100">Be the First to Experience the Future of R&D.</h2>
-            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                Join our waitlist for priority access to the Elucida Labs platform. Help shape the tools that will define the next generation of process development.
-            </p>
-            <div class="mt-10">
-                <button id="footer-cta-btn" class="cta-button bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-xl">
-                    Request Early Access
-                </button>
-                <p class="text-sm text-gray-500 mt-4">Get exclusive updates and be first in line.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-[#161B22] border-t border-gray-800">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
-            <p>&copy; 2025 Elucida Labs. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Elucida Labs, Inc. All Rights Reserved.</p>
+        <p style="margin-top: 10px;">San Jose, CA</p>
     </footer>
 
-    <div id="form-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden opacity-0">
-        <div class="modal-content bg-[#161B22] p-8 rounded-2xl w-full max-w-md relative border border-gray-700 shadow-2xl scale-95">
-            
-            <div id="form-container">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-white">Request Early Access</h3>
-                    <button id="close-modal-btn" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-lucide="x" class="h-8 w-8"></i>
-                    </button>
-                </div>
-                
-                <form id="application-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="3e93d44d-5f16-4c04-a9dc-24470a5871e4">
-                    <input type="hidden" name="subject" value="New Early Access Request - Elucida Labs">
-                    <input type="hidden" name="from_name" value="Elucida Labs Website">
-
-                    <div class="space-y-4">
-                        <div>
-                            <label for="full-name" class="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
-                            <input type="text" id="full-name" name="full_name" required class="w-full bg-gray-800 border-gray-600 text-white rounded-lg p-2 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
-                        </div>
-                        <div>
-                            <label for="company" class="block text-sm font-medium text-gray-400 mb-1">Company Name</label>
-                            <input type="text" id="company" name="company" required class="w-full bg-gray-800 border-gray-600 text-white rounded-lg p-2 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Work Email</label>
-                            <input type="email" id="email" name="email" required class="w-full bg-gray-800 border-gray-600 text-white rounded-lg p-2 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <button type="submit" class="w-full cta-button bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-lg">
-                            Join the waitlist
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="success-message" class="hidden text-center py-10">
-                <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-500/20 mx-auto mb-6">
-                    <i data-lucide="check" class="text-green-400 h-8 w-8"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Thank You!</h3>
-                <p class="text-gray-300 mb-6">You've been added to the waitlist. We will be in touch with updates soon.</p>
-                <button id="close-success-btn" class="cta-button bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg">Close</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
