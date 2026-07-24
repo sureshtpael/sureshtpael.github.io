@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elucida Labs | Semiconductor Process Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #002060; /* Dark Blue from your deck */
+            --accent-teal: #00B050; /* Teal from your deck */
+            --text-light: #F5F7FA;
+            --text-gray: #A0AEC0;
+            --bg-dark: #001025;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Flex layout to center content vertically */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Gradient Background Effect */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-blue) 100%);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-shrink: 0; /* Prevents nav from shrinking */
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn {
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+            background: rgba(0, 176, 80, 0.1);
+        }
+
+        /* Hero Section - Centered layout */
+        .hero {
+            flex-grow: 1; /* Pushes footer down, takes available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center */
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            /* Visual adjustment to pull text slightly up from dead-center */
+            padding-bottom: 5vh; 
+        }
+
+        h1 {
+            font-size: 3.5rem; 
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <nav>
+        <div class="logo">
+            Elucida Labs
+        </div>
+        <a href="mailto:info@elucidalabs.com" class="contact-btn">Contact Us</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Accelerating the Future of Semiconductor Innovation</h1>
+        
+        <p class="subtitle">
+            We bridge the gap between advanced physics and state-of-the-art AI to deliver unprecedented efficiency in semiconductor process development.
+        </p>
+    </header>
+
+    <footer>
+        <p>&copy; 2025 Elucida Labs, Inc. All Rights Reserved.</p>
+        <p style="margin-top: 10px;">San Jose, CA</p>
+    </footer>
+
+</body>
+</html>
